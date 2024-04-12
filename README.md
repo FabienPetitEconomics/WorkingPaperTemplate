@@ -5,9 +5,9 @@ WorkingPaperModel is a LaTeX template for working papers designed by Fabien Peti
 ---------------------
 
 FILES are organized as follows:
-- `main.tex` : main file for the working paper.
-- `prez.tex` : main file for the slides.
-- `references.bib` : bibliography in bibtex.
+- `main.tex`: main file for the working paper.
+- `prez.tex`: main file for the slides.
+- `references.bib`: bibliography in bibtex.
 
 DIRECTORIES are organized as follows:
 
