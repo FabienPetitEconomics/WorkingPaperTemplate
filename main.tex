@@ -1,0 +1,217 @@
+\documentclass[12pt]{article}
+% \usepackage[utf8]{inputenc}
+
+%% PACKAGES
+% Meta
+\usepackage{geometry, color, hyperref, ragged2e}
+\usepackage{setspace}
+\usepackage{pdflscape} % Produce landscape pages in a (mainly) portrait document.
+% Maths
+\usepackage{amsmath, amsfonts, unicode-math, bbold}
+% Bibliography
+\usepackage{natbib}
+% Graphics
+\usepackage{graphicx, subcaption}
+% Tables
+\usepackage{threeparttable, booktabs, caption, dcolumn, threeparttablex, longtable, adjustbox, multirow}
+\usepackage{rotating} 
+% Lists
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+% Epigraph
+\usepackage{epigraph}
+% Typesetting
+\usepackage{soul} % Break line in underline with \ul
+\usepackage{microtype} % Improve word breaking
+
+%%%%% MINIMAL EXTENSIONS
+\RequirePackage[TS1,T1]{fontenc}			%% font encodage
+% \RequirePackage{lmodern}					%% latin font
+\RequirePackage{fourier-otf}			    %% Adobe Utopia font
+\RequirePackage{textcomp}					%% other symbols
+\setlength{\parindent}{20pt}                %% par indent
+
+%% PACKAGES OPTIONS
+% BASE: Penalty to avoid split in footnotes
+\interfootnotelinepenalty=10000
+% GEOMETRY: Page size
+\geometry{left = 1.0in, right = 1.0in, top = 1.0in , bottom = 1.0in}
+% HYPERREF : Hyperlink colors
+\hypersetup{
+	colorlinks = true,
+	linkcolor = blue,
+	anchorcolor = blue,
+	citecolor = blue,
+	filecolor = blue,
+	urlcolor = blue
+}
+% AMSMATH : theorems environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+% AUTHBLK
+% \renewcommand\Authands{ and } % Remove the comma before 'and'
+% TITLE / AUTHOR /DATE
+\usepackage{titling}
+
+\begin{document}
+
+%% Title
+\title{Title\thanks{
+We are grateful to <Names>, as well as to audiences at the <Conferences> and seminar participants at <Seminars> for useful comments and suggestions. 
+This work was supported by <Grants>.
+}}
+%% Authors
+\author{Fabien Petit\thanks{University College London, CEPEO. Email: \href{mailto:f.petit@ucl.ac.uk}{f.petit@ucl.ac.uk}. Website: \href{www.fabienpetit.com}{fabienpetit.com}.}
+\and
+Author2\thanks{Affiliation2. Email: \href{mailto:email2}{email2}. Website: \href{website1}{website2}.}}
+
+\begin{titlepage}
+\maketitle
+
+\begin{abstract}
+\noindent This is not an abstract.
+
+\vspace{1em}
+\noindent\textbf{Keywords:} These, are, not, keywords.\\
+\noindent\textbf{JEL Codes:} A, B, C.
+\end{abstract}
+
+\setcounter{page}{0}
+\thispagestyle{empty}
+\end{titlepage}
+
+\pagebreak
+
+% Line spacing	
+\onehalfspacing % Content in 1.5 spacing
+
+\section{Introduction}\label{sec:introduction}
+\input{_chapter/01-introduction}
+
+\section{Section} \label{sec:section}
+\input{_chapter/02-section}
+
+\section{Conclusion} \label{sec:conclusion}
+\input{_chapter/03-conclusion}
+
+%% Comments the lines below
+% \clearpage
+% \section{New material}
+% \input{_chapter/99-newmaterial}
+
+\clearpage
+\onehalfspacing % Bibliography and appendix in one half spacing
+\bibliographystyle{apalike}
+\bibliography{references.bib}
+
+%%% APPENDIX %%%
+\clearpage
+\appendix
+\section*{Appendices}
+\addcontentsline{toc}{section}{Appendices}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\counterwithin{figure}{subsection}
+\counterwithin{table}{subsection}
+\renewcommand\thefigure{\thesubsection.\arabic{figure}}
+\renewcommand{\thetable}{\thesubsection.\arabic{table}}
+
+\subsection{Appendix A}\label{app-A}
+\input{_chapter/A-appendix}
+\clearpage
+\subsection{Appendix B}\label{app-B}
+\input{_chapter/B-appendix}
+
+\counterwithout{figure}{subsection}
+\counterwithout{table}{subsection}
+
+%%%%% ADDITIONAL APPENDICES %%%%
+% `\nolink` removes links to literature in online and review appendix
+\newcommand*{\nolink}[1]{%
+  {\protect\NoHyper#1\protect\endNoHyper}%
+}
+% To remove links to equation or section, use `\ref*` instead of `\ref`
+
+%%% ONLINE APPENDIX %%%
+\clearpage
+\begin{center}
+    \section*{Online Appendix}
+    \addcontentsline{toc}{section}{Online Appendix}
+    \textbf{\Large \thetitle}\\
+    \vspace{1em}
+    \theauthor
+\end{center}
+\vspace{1em}
+
+% Short name of the section
+\renewcommand{\thesection}{OA}
+
+% Setup for pages, figures, and tables
+\pagenumbering{arabic}% resets `page` counter to 1
+\renewcommand{\thepage}{\thesection-\arabic{page}}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\setcounter{figure}{0} % resets `figure` counter to 1
+\setcounter{table}{0} % resets `table` counter to 1
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+
+\input{_chapter/O-online}
+
+%%% REVIEWER APPENDIX %%%
+\clearpage
+\begin{center}
+    \section*{Reviewer Appendix}
+    \addcontentsline{toc}{section}{Reviewer Appendix}
+    \textbf{\Large \thetitle}\\
+    \vspace{1em}
+    \theauthor
+\end{center}
+\vspace{1em}
+
+% Short name of the section
+\renewcommand{\thesection}{RA}
+
+% Setup for pages, figures, and tables
+\pagenumbering{arabic}% resets `page` counter to 1
+\renewcommand{\thepage}{\thesection-\arabic{page}}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\setcounter{figure}{0} % resets `figure` counter to 1
+\setcounter{table}{0} % resets `table` counter to 1
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+
+\input{_chapter/R-reviewer}
+
+%%% PERSONAL APPENDIX %%%
+%\clearpage
+%\begin{center}
+%   \section*{Personal Appendix}
+%    \addcontentsline{toc}{section}{Personal Appendix}
+%    \textbf{\Large \thetitle}\\
+%    \vspace{1em}
+%    \theauthor
+%\end{center}
+%\vspace{1em}
+
+%% Short name of the section
+%\renewcommand{\thesection}{PA}
+
+%% Setup for pages, figures, and tables
+%\pagenumbering{arabic}% resets `page` counter to 1
+%\renewcommand{\thepage}{\thesection-\arabic{page}}
+%\counterwithin{figure}{section}
+%\counterwithin{table}{section}
+%\setcounter{figure}{0} % resets `figure` counter to 1
+%\setcounter{table}{0} % resets `table` counter to 1
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+%\renewcommand{\thetable}{\thesection.\arabic{table}}
+
+%\input{_chapter/P-personal}
+
+\end{document}

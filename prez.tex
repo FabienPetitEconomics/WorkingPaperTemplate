@@ -1,0 +1,162 @@
+% !TeX spellcheck = en_US
+\documentclass[usenames, dvipsnames, aspectratio = 169]{beamer}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{mathtools, cases, xcolor, graphicx, graphics, mathrsfs, dsfont, amssymb, multirow, dcolumn, natbib, hyperref, multicol, subcaption, changepage, booktabs, caption, appendixnumberbeamer, enumerate, natbib}
+\usepackage{lmodern} % http://ctan.org/pkg/lm
+\usepackage{textpos}
+\usepackage{tikz}
+\usepackage{transparent}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage[flushleft]{threeparttable}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{adjustbox}
+\usepackage{fontawesome5}
+
+\usetheme{Boadilla}
+
+% AMSMATH : theorems environments
+\setbeamertemplate{theorems}[numbered]
+% \newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+% \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}{Proposition}
+% \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}{Conjecture}
+% \newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+% Define University colors
+\definecolor{DarkGray}{HTML}{999999} %999999
+\definecolor{Black}{HTML}{000000} %000000
+\definecolor{OrangeUCL}{HTML}{ea7600} %ea7600
+
+\definecolor{Set1Red}{HTML}{e4211c}
+\definecolor{Set1Blue}{HTML}{377eb8}
+\definecolor{Set1Green}{HTML}{4daf4a}
+\definecolor{Set1Purple}{HTML}{984ea3}
+\definecolor{Set1Orange}{HTML}{d86b00}
+
+\definecolor{Twitter}{HTML}{00acee}
+
+% Set colors for structure
+\setbeamercolor{structure}{fg = Black, bg = OrangeUCL}
+
+% HYPERREF : Hyperlink colors
+\hypersetup{
+	colorlinks = true,
+	linkcolor = white,
+	anchorcolor = blue,
+	citecolor = gray!50,
+	filecolor = blue,
+	urlcolor = OrangeUCL!75
+}
+
+\setcounter{tocdepth}{2}
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{itemize items}[square]
+\setbeamertemplate{itemize subitem}[default]
+\setbeamercovered{transparent}
+
+\useoutertheme[footline=empty, subsection=false]{miniframes}
+
+% Macro to remove first bullet in navigation bar [START]
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\makeatother
+% Macro to remove first bullet in navigation bar [END]
+
+\setbeamercolor{section in head/foot}{fg=white, bg=structure.fg!90}
+\setbeamercolor*{mini frame}{fg=white, bg=white}
+\setbeamercolor{page number in head/foot}{fg=white}
+\setbeamercolor{date in head/foot}{fg=white}
+\setbeamercolor{lower separation line head}{bg = OrangeUCL!75}
+
+\setbeamercolor{section in toc}{fg=OrangeUCL} % BlueSussex
+\setbeamercolor{emph}{fg=OrangeUCL} % BlueSussex
+\renewcommand<>{\emph}[1]{%
+  {\usebeamercolor[fg]{emph}#1}%
+}
+\renewcommand<>{\refs}[1]{%
+  {\small\color{gray!50}#1}%
+}
+
+\begin{document}
+	\title[Title]{Title}
+	\author[Petit, Author 2 and Author 3]{Fabien Petit\inst{1}
+	\and Author 2\inst{2}
+	\and Author 3\inst{3}}
+	
+	\institute[]{\inst{1} University College London, CEPEO 
+	\and \inst{2} Institution 2
+	\and \inst{2} Institution 3}
+	
+	\date{\today}
+
+\begin{frame}[plain]
+    \titlepage
+    \vspace{-0.5cm}
+    \begin{figure}
+	\begin{subfigure}[h]{0.49\linewidth}
+		\centering
+		\includegraphics[width=.5\linewidth]{_logo/ucl.png} 
+	\end{subfigure}
+	%%%
+        \hfill
+	\begin{subfigure}[h]{0.49\linewidth}
+		\centering
+		  \includegraphics[width=.5\linewidth]{_logo/ucl.png} 
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\section{Introduction}
+\input{_slide/01-introduction}
+
+% OUTLINE (general) / Comment if not needed
+\begin{frame}[plain]{Outline}
+    \addtocounter{framenumber}{-1}
+    \begin{NoHyper}\tableofcontents\end{NoHyper}
+\end{frame}
+
+% OUTLINE with highlight at the beginning of sections / Comment if not needed
+\AtBeginSection[]
+{
+    \miniframesoff
+    \begin{frame}[plain]{Outline}
+        \addtocounter{framenumber}{-1}
+        \begin{NoHyper}\tableofcontents[currentsection]\end{NoHyper}
+    \end{frame}
+    \miniframeson
+}
+
+\section{Section}
+\input{_slide/02-section}
+
+\section{Conclusion}
+\input{_slide/03-conclusion}
+
+\AtBeginSection[]{}
+
+\appendix
+\section{Appendix}
+\input{_slide/appendix}
+	
+\begin{frame}<beamer:0>[allowframebreaks]\frametitle{References}
+    \footnotesize
+    \bibliographystyle{apalike}
+    \bibliography{references.bib}
+\end{frame}
+
+\end{document}
