@@ -24,8 +24,8 @@ LABELS and REFERENCES have the following pattern:
 
 - for SECTIONS: the name of the section with 'sec:' before (i.e., `\label{sec:introduction}` and `\ref{sec:introduction}`)
 - for EQUATIONS: the name of the equation with 'eq:' before (i.e., `\label{eq:utility}` and `\eqref{eq:utility}`)
-- for FIGURES: the name of the figure with 'fig:' before (i.e., `\label{fig:gdp-growth}` and `\label{eq:gdp-growth}`)
-- for TABLES: the name of the table with 'tab:' before (i.e., `\ref{tab:parameters}` and `\label{tab:parameters}`)
+- for FIGURES: the name of the figure with 'fig:' before (i.e., `\label{fig:gdp-growth}` and `\ref{eq:gdp-growth}`)
+- for TABLES: the name of the table with 'tab:' before (i.e., `\ref{tab:parameters}` and `\ref{tab:parameters}`)
 
 ---------------------
 
