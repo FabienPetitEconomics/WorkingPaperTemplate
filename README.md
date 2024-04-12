@@ -1,6 +1,6 @@
 # Working Paper Template
 
-WorkingPaperModel is a LaTeX template for working papers designed by Fabien Petit.
+WorkingPaperTemplate is a LaTeX template for working papers designed by Fabien Petit.
 
 ---------------------
 
